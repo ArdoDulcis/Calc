@@ -197,7 +197,7 @@
     }
 }
 .fadeInLeft {
-    animation-name: fadeInLeft;
+    animation: fadeInLeft 1s;
 }
 @keyframes fadeOutLeft {
     from {
@@ -210,7 +210,7 @@
     }
 }
 .fadeOutLeft {
-    animation-name: fadeOutLeft;
+    animation: fadeOutLeft 1s;
 }
 @keyframes fadeInUp {
     from {
@@ -225,7 +225,7 @@
 }
 
 .fadeInUp {
-    animation-name: fadeInUp;
+    animation: fadeInUp 0.9s;
 }
 @keyframes fadeOutDown {
     from {
@@ -239,7 +239,7 @@
 }
 
 .fadeOutDown {
-    animation-name: fadeOutDown;
+    animation: fadeOutDown 0.9s;
 }
 .other {
     background-color: transparent;
