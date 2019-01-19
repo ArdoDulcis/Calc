@@ -378,10 +378,14 @@ function load_anim(a_name) {
 };
 function help_anim(helpani_name, phase) {
     if (phase == 1) {
-        $('.ani1').removeClass().addClass(helpani_name);
+        $('.ani1').removeClass().addClass(helpani_name + ' animated').one('animationend', function(){
+            $(this).removeClass().addClass('ani1');
+        });
     }
     else if (phase == 2) {
-        $('.ani2').removeClass().addClass(helpani_name);
+        $('.ani2').removeClass().addClass(helpani_name + ' animated').one('animationend', function(){
+            $(this).removeClass().addClass('ani2');
+        });
     }
 };
 function check_scientific_calc(id2) {
