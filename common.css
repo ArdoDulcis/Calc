@@ -1,0 +1,376 @@
+/*Grid*/
+.wrapper {
+    display: grid;
+    grid-template-columns: 250px 850px auto;
+    grid-template-rows: 215px auto;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+}
+.infomation {
+    width: 1662px;
+    height: 215px;
+}
+.grid1 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+.grid3 {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    justify-self: center;
+}
+.grid4 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    color: #ffffff;
+    background-color: rgba(0,0,0, 0.2);
+    transition: background-color 1s, transform 1s;
+}
+.grid4:hover {
+    background-color: #ffffff;
+    transform: scale(1.02,1.02);
+    color: #020024;
+}
+.grid5 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    overflow-y: hidden;
+    height: 555px;
+    background-color: rgba(0,0,0, 0.1);
+    transition: background-color 1s, transform 1s;
+}
+.grid5:hover {
+    background-color: #ffffff;
+    transform: scale(1.02,1.02);
+    color: #020024;
+}
+.wrapper_menu {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 323px 323px;
+}
+.menu_grid1 {
+    grid-row-start: 1;
+    grid-row-end: 2
+}
+.menu_grid2 {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    align-self: center;
+    justify-self: center;
+}
+.calc_background {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+.wrapper_calc {
+    display: grid;
+    grid-template-columns: 600px auto;
+    grid-template-rows: 30px 30px 30px;
+    grid-column-gap: 15px;
+    grid-row-gap: 30px;
+}
+.calc_now {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+}
+.calc_grid1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    height: 45px;
+    border: solid 2px;
+}
+.calc_grid2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    height: 45px;
+    border: solid 2px;
+}
+.calc_grid3 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    height: 45px;
+    border: solid 2px;
+}
+.wrapper_tuto {
+    display: grid;
+    grid-template-columns: 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+}
+.wrapper_tuto:after {
+    content: '';
+    position: absolute;
+    border-top: 10px solid transparent;
+    border-right: 15px solid #fff;
+    border-bottom: 10px solid transparent;
+    top: 15px;
+    left: -10px;
+}
+.tuto_grid1 {
+    font-family: 'Kosugi Maru', serif;
+    font-size: 20px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+}
+.tuto_exit {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    justify-self: end;
+}
+.tuto_grid2 {
+    font-family: 'Kosugi Maru', serif;
+    font-size: 20px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+}
+.tuto_grid3 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 16px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    align-self: end;
+    justify-self: end;
+}
+/*Animations*/
+.calcbtn{
+    background:#2196F3;
+    color:#fff;
+    border:none;
+    position:relative;
+    float: left;
+    width:100px;
+    height:75px;
+    font-family: 'Dancing Script', serif;
+    font-size:28px;
+    padding:0em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+}
+.calcbtn:hover{
+    background:#fff;
+    color:#1976D2;
+}
+.calcbtn:before,.calcbtn:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #1976D2;
+    transition:400ms ease all;
+}
+.calcbtn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+.calcbtn:hover:before,.calcbtn:hover:after{
+    width:100%;
+    transition:800ms ease all;
+}
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+.fadeInLeft {
+    animation-name: fadeInLeft;
+}
+@keyframes fadeOutLeft {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+.fadeOutLeft {
+    animation-name: fadeOutLeft;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.fadeInUp {
+    animation-name: fadeInUp;
+}
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+.fadeOutDown {
+    animation-name: fadeOutDown;
+}
+.other {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1em;
+    font-size: 18px;
+    line-height: 1em;
+    width: 150px;
+    margin: 15px 40px;
+    outline: none;
+    padding: 12px 40px 10px;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.other:before,
+.other:after {
+    border-color: transparent;
+    -webkit-transition: all 0.25s;
+    transition: all 0.25s;
+    border-style: solid;
+    border-width: 0;
+    content: "";
+    height: 24px;
+    position: absolute;
+    width: 24px;
+}
+.other:before {
+    border-color: #5aa2e0;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    right: -5px;
+    top: -5px;
+}
+.other:after {
+    border-bottom-width: 2px;
+    border-color: #5aa2e0;
+    border-left-width: 2px;
+    bottom: -5px;
+    left: -5px;
+}
+.other:hover,
+.other.hover {
+    background-color: #ffffff;
+    color: #050d4a;;
+}
+.other:hover:before,
+.other.hover:before,
+.other:hover:after,
+.other.hover:after {
+    height: 100%;
+    width: 100%;
+}
+/*color*/
+body {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,30,121,1) 40%, rgba(0,224,255,1) 92%);
+}
+.mathbtn {
+    font-size: 30px;
+    background:#8BC34A;
+}
+.eq {
+    font-size: 30px;
+    background:#F44336;
+}
+.cancel {
+    background:#E91E63;
+}
+.scientificbtn {
+    background:#00BCD4;
+}
+.empty {
+    background:#00BCD4;
+}
+.overlay {
+    display: none;
+    z-index: 1000;
+    position: fixed;
+    width: 100%; height: 100%;
+    left: 0; top: 0;
+    background-color: rgba(0,0,0, 0.4);
+    overflow-x: hidden;
+}
+/* font */
+#number{
+    width: 580px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 28px;
+    text-align: right;
+}
+#calc {
+    font-family: 'Roboto Slab', serif;
+    font-size: 28px;
+    text-align: center;
+}
+#save {
+    width: 680px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 28px;
+    text-align: right;
+}
+.math_expression {
+    overflow:auto;
+    width:700px;
+    height: 75px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 20px;
+    text-align: right;
+}
+.clock {
+    font-family: 'Dancing Script', serif;
+    font-size: 30px;
+}
+li {
+    font-family: 'Roboto Slab', serif;
+    font-size: 20px;
+}
+/* other */
+table, th, td {
+    border: 1px solid #ffffff;
+    border-spacing: 1px;
+}
+.tuto_btn {
+    width: 50px;
+    height: 30px;
+}
+form {
+    border:5px #1976D2;
+}

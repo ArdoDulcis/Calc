@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>Calculator</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/javascript;charset=UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Language" content="ja" />
+    <link rel="stylesheet" type="text/css" href="./common.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700|Kosugi+Maru|Roboto+Slab" rel="stylesheet">
+</head>
+<body class="p-2">
+<!-- Tutorial page -->
+<div class="overlay">
+    <div class="ani1">
+        <div class="wrapper_tuto tuto_1 p-3 mb-5 bg-white rounded" style="position: absolute; left: 230px; top: 355px;">
+            <div class="tuto_grid1">
+                ヘルプ
+                <hr/>
+            </div>
+            <div class="tuto_exit">
+                <img src="./img/cross.svg" class="exit"/>
+            </div>
+            <div class="tuto_grid2">
+                切り替えボタンです。ボタンを押すと一般計算機から工学用の計算機に切り替わります。
+            </div>
+            <div class="tuto_grid3">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-primary btn-sm" disabled="true">Prev</button>
+                    <button class="btn btn-primary btn-sm tuto1_next">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ani2">
+        <div class="wrapper_tuto tuto_2 p-3 mb-5 bg-white rounded" style="position: absolute; left: 1000px; top: 425px;">
+            <div class="tuto_grid1">
+                ヘルプ
+                <hr/>
+            </div>
+            <div class="tuto_exit">
+                <img src="./img/cross.svg" class="exit"/>
+            </div>
+            <div class="tuto_grid2">
+                表示部です。上は入力された数字が表示されます。下は計算の結果が表示されます。
+            </div>
+            <div class="tuto_grid3">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-primary btn-sm tuto2_prev">Prev</button>
+                    <button class="btn btn-primary btn-sm tuto2_next">Exit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="wrapper">
+    <div class="grid1">
+        <div class="text-white">
+            <h1 class="display-8">Calculator Web App</h1>
+            <p class="lead" style="text-align: left;">Author : Kim Min Cheol</p>
+            <p class="lead" style="text-align: left;">Create Date : 2018/08/17</p>
+        </div>
+    </div>
+    <div class="grid3 p-2 rounded">
+        <div class="wrapper_menu">
+            <div class="menu_grid1">
+                <div>
+                    <button class="other help">Help</button>
+                </div>
+                <div>
+                    <button class="other change" id="change" mode="0">Change</button>
+                </div>
+                <div>
+                    <button class="other his_clear">Clear History</button>
+                </div>
+            </div>
+            <div class="menu_grid2 text-white">
+                <div style="font-family: 'Kosugi Maru', serif; font-size: 20px; text-align: center;">現在時刻
+                    <p class="clock"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- calculator Main -->
+    <div class="calc_background p-3 rounded">
+    </div>
+    <div class="shadow-lg p-3 m-5 rounded grid4">
+        <div class="wrapper_calc">
+            <div class="calc_now">
+                <div class="math_expression"></div>
+            </div>
+            <div class="calc_grid1 shadow-lg bg-white rounded text-secondary">
+                <div id="number"></div>
+            </div>
+            <div class="calc_grid2 shadow-lg bg-white rounded text-secondary">
+                <div id="calc"></div>
+            </div>
+            <div class="calc_grid3 shadow-lg bg-white rounded text-secondary">
+                <div id="save"></div>
+            </div>
+        </div>
+        <br/>
+        <table>
+            <tbody>
+            <tr id="transform">
+                <td>
+                    <button class="calcbtn scientificbtn scientific_calc" id="sin">sin</button>
+                </td>
+                <td>
+                    <button class="calcbtn scientificbtn scientific_calc" id="cos">cos</button>
+                </td>
+                <td>
+                    <button class="calcbtn scientificbtn scientific_calc" id="tan">tan</button>
+                </td>
+                <td>
+                    <button class="calcbtn scientificbtn scientific_calc" id="fact">n!</button>
+                </td>
+                <td>
+                    <button class="calcbtn scientificbtn scientific_calc" id="sqrt">x^</button>
+                </td>
+                <td>
+                    <button class="calcbtn scientificbtn scientific_calc" id="log">log</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="calcbtn numbtn" id="7">7</button>
+                </td>
+                <td>
+                    <button class="calcbtn numbtn" id="8">8</button>
+                </td>
+                <td>
+                    <button class="calcbtn numbtn" id="9">9</button>
+                </td>
+                <td>
+                    <button class="calcbtn mathbtn math" id = "÷">÷</button>
+                </td>
+                <td>
+                    <button class="calcbtn mathbtn math" id = "±">±</button>
+                </td>
+                <td>
+                    <button class="calcbtn cancel" id="clear">CA</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="calcbtn numbtn" id="4">4</button>
+                </td>
+                <td>
+                    <button class="calcbtn numbtn" id="5">5</button>
+                </td>
+                <td>
+                    <button class="calcbtn numbtn" id="6">6</button>
+                </td>
+                <td>
+                    <button class="calcbtn mathbtn math" id="×">×</button>
+                </td>
+                <td>
+                    <button class="calcbtn mathbtn math" id="%">%</button>
+                </td>
+                <td>
+                    <button class="calcbtn cancel" id="bs">BS</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="calcbtn numbtn" id="1">1</button>
+                </td>
+                <td>
+                    <button class="calcbtn numbtn" id="2">2</button>
+                </td>
+                <td>
+                    <button class="calcbtn numbtn" id="3">3</button>
+                </td>
+                <td>
+                    <button class="calcbtn mathbtn math" id="-">-</button>
+                </td>
+                <td rowspan="2">
+                    <button class="calcbtn eq math" id="=" style="width: 100px; height: 151px;">=</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="calcbtn numbtn" id="0" style="width: 204px; height: 75px;">0</button>
+                </td>
+                <td>
+                    <button class="calcbtn dot" id=".">.</button>
+                </td>
+                <td>
+                    <button class="calcbtn mathbtn math" id="+">+</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="shadow-lg p-3 mt-5 mb-5 ml-3 mr-3 rounded grid5">
+        <ul>
+            <p style="font-family: 'Kosugi Maru', serif; font-size: 28px;">履歴</p>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="./Core.js"></script>
+</body>
+</html>
