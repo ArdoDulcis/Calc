@@ -263,12 +263,11 @@ function event(calc_id) {
             flag = true;
         }
     }
-    //エラー処理
-    check_err()
-    //ボタンPOST送信ブロック
+    
+    check_err();
+    
     return false;
 }
-//エラー関数
 function check_err() {
     var checknum = $('#save').text().replace(delcom, '').replace(/-/g, '')
     if (checknum.indexOf(".") == -1) {
